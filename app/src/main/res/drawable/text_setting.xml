@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 그림자 효과 -->
+    <item>
+        <shape
+            android:shape="rectangle">
+            <solid android:color="#25000000"/> <!-- 반투명 검정색 그림자 -->
+            <corners android:radius="16dp"/> <!-- 둥근 모서리 -->
+            <padding
+                android:left="4dp"
+                android:top="4dp"
+                android:right="4dp"
+                android:bottom="4dp"/>
+        </shape>
+    </item>
+
+    <!-- 텍스트뷰 배경 -->
+    <item>
+        <shape
+            android:shape="rectangle">
+            <solid android:color="@color/material_dynamic_tertiary70"/> <!-- 배경 색상 (흰색) -->
+            <corners android:radius="16dp"/> <!-- 둥근 모서리 -->
+        </shape>
+    </item>
+</layer-list>

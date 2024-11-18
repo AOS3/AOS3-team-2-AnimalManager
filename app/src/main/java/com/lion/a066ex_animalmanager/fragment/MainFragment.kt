@@ -26,8 +26,6 @@ class MainFragment : Fragment() {
     var animalList = mutableListOf<AnimalViewModel>()
     lateinit var fragmentMainBinding: FragmentMainBinding
     lateinit var mainActivity: MainActivity
-
-    var isLongClick = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -92,6 +90,7 @@ class MainFragment : Fragment() {
     inner class RecyclerViewMainAdapter() : RecyclerView.Adapter<RecyclerViewMainAdapter.ViewMainViewHolder>(){
         // ViewHolder
         inner class ViewMainViewHolder(var recyclerRowBinding: RecyclerRowBinding): RecyclerView.ViewHolder(recyclerRowBinding.root), OnClickListener, OnLongClickListener{
+            var isLongClick = false
             override fun onClick(v: View?) {
                 isLongClick = false
                 // 사용자가 누른 동물의 동물 번호를 담아준다.

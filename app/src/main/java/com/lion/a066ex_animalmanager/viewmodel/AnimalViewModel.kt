@@ -8,4 +8,5 @@ data class AnimalViewModel (
     var animalName: String,
     var animalAge: Int,
     var animalContent: String,
+    var animalImage: String,
 )

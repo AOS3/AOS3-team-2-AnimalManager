@@ -10,5 +10,6 @@ data class AnimalVO (
     var animalType: Int = 0,
     var animalName: String = "",
     var animalAge: Int = 0,
-    var animalContent: String = ""
+    var animalContent: String = "",
+    var animalImage: String = ""
 )

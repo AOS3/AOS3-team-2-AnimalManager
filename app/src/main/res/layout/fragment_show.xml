@@ -98,6 +98,20 @@
             android:background="@drawable/text_setting"
             android:text="TextView"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="애완 동물 사진" />
+
+        <ImageView
+            android:id="@+id/imageViewShowAnimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:src="@android:color/transparent" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

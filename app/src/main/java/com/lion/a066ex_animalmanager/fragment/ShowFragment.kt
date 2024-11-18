@@ -34,15 +34,19 @@ class ShowFragment : Fragment() {
         return fragmentShowBinding.root
     }
 
+    // Toolbar 설정 메서드
     fun settingToolbar() {
         fragmentShowBinding.apply {
+            // 타이틀 중앙정렬
             materialToolbarShow.isTitleCentered = true
+            // 타이틀
             materialToolbarShow.title = "동물 정보 보기"
+            // 네비게이션
             materialToolbarShow.setNavigationIcon(R.drawable.arrow_back_24px)
             materialToolbarShow.setNavigationOnClickListener {
                 mainActivity.removeFragment(FragmentName.SHOW_FRAGMENT)
             }
-
+            // 메뉴
             materialToolbarShow.setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.menuReplace -> {
@@ -61,13 +65,17 @@ class ShowFragment : Fragment() {
         }
     }
 
+    // 요소 설정
     fun settingText() {
         fragmentShowBinding.textViewShowType.text = ""
         fragmentShowBinding.textViewShowName.text = ""
         fragmentShowBinding.textViewShowAge.text = ""
         fragmentShowBinding.textViewShowContent.text = ""
+        fragmentShowBinding.imageViewShowAnimal.setImageURI(null)
 
+        // 동물 번호를 가져온다.
         val animalIdx = arguments?.getInt("animalIdx")
+        // 동물 데이터를 가져온다.
         CoroutineScope(Dispatchers.Main).launch {
             val work1 = async(Dispatchers.IO){
                 AnimalRepository.selectAnimalDataByIdx(mainActivity, animalIdx!!)
@@ -78,9 +86,17 @@ class ShowFragment : Fragment() {
             fragmentShowBinding.textViewShowName.text = animalViewModel.animalName
             fragmentShowBinding.textViewShowAge.text = "${animalViewModel.animalAge}"
             fragmentShowBinding.textViewShowContent.text = animalViewModel.animalContent
+            // animalImage가 null이 아닌 경우, uriString에 값이 들어온다.
+            animalViewModel.animalImage?.let { uriString ->
+                // URI 문자열을 Uri 객체로 변환한다.
+                val uri = android.net.Uri.parse(uriString)
+                // 이미지 뷰에 URI를 사용하여 이미지 설정한다.
+                fragmentShowBinding.imageViewShowAnimal.setImageURI(uri)
+            }
         }
     }
 
+    // 동물정보를 삭제하는 메서드
     fun deleteDone(){
         val materialAlertDialogBuilder = MaterialAlertDialogBuilder(mainActivity)
         materialAlertDialogBuilder.setTitle("동물 정보 삭제")

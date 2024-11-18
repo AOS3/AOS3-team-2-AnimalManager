@@ -1,6 +1,7 @@
 package com.lion.a066ex_animalmanager.repository
 
 import android.content.Context
+import android.util.Log
 import com.lion.a066ex_animalmanager.dao.AnimalDatabase
 import com.lion.a066ex_animalmanager.util.AnimalType
 import com.lion.a066ex_animalmanager.viewmodel.AnimalViewModel
@@ -15,8 +16,11 @@ class AnimalRepository {
             val animalName = animalViewModel.animalName
             val animalAge = animalViewModel.animalAge
             val animalContent = animalViewModel.animalContent
+            val animalImage = animalViewModel.animalImage
 
-            val animalVO = AnimalVO(animalType = animalType, animalName = animalName, animalAge = animalAge, animalContent = animalContent)
+            val animalVO = AnimalVO(animalType = animalType, animalName = animalName, animalAge = animalAge, animalContent = animalContent, animalImage = animalImage)
+
+            Log.d("AnimalRepository", "Animal Image URI: $animalImage")
 
             animalDatabase?.animalDAO()?.insertAnimalData(animalVO)
         }
@@ -37,8 +41,9 @@ class AnimalRepository {
                 val animalAge = it.animalAge
                 val animalIdx = it.animalIdx
                 val animalContent = it.animalContent
+                val animalImage = it.animalImage
 
-                val animalViewModel = AnimalViewModel(animalIdx, animalType, animalName, animalAge, animalContent)
+                val animalViewModel = AnimalViewModel(animalIdx, animalType, animalName, animalAge, animalContent, animalImage)
 
                 animalViewModelList.add(animalViewModel)
             }
@@ -58,8 +63,9 @@ class AnimalRepository {
             val animalName = animalVo?.animalName
             val animalAge = animalVo?.animalAge
             val animalContent = animalVo?.animalContent
+            val animalImage = animalVo?.animalImage
 
-            val animalViewModel = AnimalViewModel(animalIdx, animalType, animalName!!, animalAge!!, animalContent!!)
+            val animalViewModel = AnimalViewModel(animalIdx, animalType, animalName!!, animalAge!!, animalContent!!, animalImage!!)
 
             return animalViewModel
         }
@@ -79,8 +85,9 @@ class AnimalRepository {
             val animalName = animalViewModel.animalName
             val animalAge = animalViewModel.animalAge
             val animalContent = animalViewModel.animalContent
+            val animalImage = animalViewModel.animalImage
 
-            val animalVO = AnimalVO(animalIdx, animalType, animalName, animalAge, animalContent)
+            val animalVO = AnimalVO(animalIdx, animalType, animalName, animalAge, animalContent, animalImage)
 
             animalDatabase?.animalDAO()?.replaceAnimalData(animalVO)
         }
